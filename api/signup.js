@@ -1,19 +1,12 @@
 // api/signup.js — Vercel serverless function
-// Handles both form types from the landing page:
-//   { type: "application", name, email, phone, room, division, referral, notes }
-//   { type: "subscribe",   email, name }
 //
-// Env vars (set in Vercel → Project → Settings → Environment Variables):
-//   DATABASE_URL   — injected automatically by `vercel install neon`
-//   RESEND_API_KEY — optional, sends you an email on each signup
-//   NOTIFY_EMAIL   — where those notifications go
+// Storage and email are independent: if one is unconfigured or fails, the
+// other still runs. The response reports what actually happened, so a silent
+// success is impossible.
 //
-// Either storage path is optional: set only RESEND_API_KEY and you get
-// emails with no database; set only DATABASE_URL and it just stores rows.
-
-import { neon } from '@neondatabase/serverless';
-
-const sql = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : null;
+// Env vars:
+//   RESEND_API_KEY, NOTIFY_EMAIL  — email notification (optional)
+//   DATABASE_URL                  — Neon Postgres (optional)
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -32,7 +25,7 @@ export default async function handler(req, res) {
 
   const row = {
     type,
-    email: email.toLowerCase().trim(),
+    email: String(email).toLowerCase().trim(),
     name: (body.name || '').trim(),
     phone: (body.phone || '').trim(),
     room: (body.room || '').trim(),
@@ -41,51 +34,78 @@ export default async function handler(req, res) {
     notes: (body.notes || '').trim(),
   };
 
-  try {
-    if (sql) {
+  const result = { stored: 'skipped', emailed: 'skipped' };
+
+  // ---- database (optional) -------------------------------------------------
+  if (process.env.DATABASE_URL) {
+    try {
+      const { neon } = await import('@neondatabase/serverless');
+      const sql = neon(process.env.DATABASE_URL);
+      await sql`
+        create table if not exists signups (
+          id bigserial primary key,
+          type text not null, email text not null,
+          name text default '', phone text default '', room text default '',
+          division text default '', referral text default '', notes text default '',
+          created_at timestamptz not null default now(),
+          unique (type, email)
+        )`;
       await sql`
         insert into signups (type, email, name, phone, room, division, referral, notes)
         values (${row.type}, ${row.email}, ${row.name}, ${row.phone},
                 ${row.room}, ${row.division}, ${row.referral}, ${row.notes})
         on conflict (type, email) do update set
-          name = excluded.name,
-          phone = excluded.phone,
-          room = excluded.room,
-          division = excluded.division,
-          referral = excluded.referral,
-          notes = excluded.notes,
-          created_at = now()
-      `;
+          name = excluded.name, phone = excluded.phone, room = excluded.room,
+          division = excluded.division, referral = excluded.referral,
+          notes = excluded.notes, created_at = now()`;
+      result.stored = 'ok';
+    } catch (err) {
+      console.error('db failed:', err);
+      result.stored = 'failed: ' + (err.message || String(err));
     }
+  }
 
-    if (process.env.RESEND_API_KEY && process.env.NOTIFY_EMAIL) {
+  // ---- email (optional) ----------------------------------------------------
+  if (process.env.RESEND_API_KEY && process.env.NOTIFY_EMAIL) {
+    try {
       const subject = row.type === 'application'
         ? `Cancún house application — ${row.name || row.email}`
         : `Cancún list signup — ${row.email}`;
 
-      const lines = Object.entries(row)
+      const text = Object.entries(row)
         .filter(([, v]) => v)
         .map(([k, v]) => `${k}: ${v}`)
         .join('\n');
 
-      await fetch('https://api.resend.com/emails', {
+      const r = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Cancún <onboarding@resend.dev>',
+          from: process.env.MAIL_FROM || 'Cancun <onboarding@resend.dev>',
           to: [process.env.NOTIFY_EMAIL],
+          reply_to: row.email,
           subject,
-          text: lines,
+          text,
         }),
       });
-    }
 
-    return res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error('signup failed', err);
-    return res.status(500).json({ error: 'could not save' });
+      if (r.ok) {
+        result.emailed = 'ok';
+      } else {
+        const detail = await r.text();
+        console.error('resend rejected:', r.status, detail);
+        result.emailed = `failed: ${r.status} ${detail}`;
+      }
+    } catch (err) {
+      console.error('resend failed:', err);
+      result.emailed = 'failed: ' + (err.message || String(err));
+    }
   }
+
+  // Success if the signup landed somewhere. Otherwise say so honestly.
+  const saved = result.stored === 'ok' || result.emailed === 'ok';
+  return res.status(saved ? 200 : 500).json({ ok: saved, ...result });
 }
