@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HYROX Cancún 2027 — The House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#07314c;
+  --blue:#0b4265;
+  --blue2:#0f5479;
+  --card:#0e4968;
+  --line:#2a7296;
+  --text:#f1fbfd;
+  --muted:#a2cede;
+  --green:#ffffff;
+  --green2:#e4f6fa;
+  --aqua:#7fe0e2;
+  --warn:#ffc48a;
+  --display:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--deep);
+  color:var(--text);
+  font-family:var(--body);
+  font-size:16px;line-height:1.6;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+.wrap{max-width:740px;margin:0 auto;padding:0 20px}
+section{padding:54px 0}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.05}
+p{margin:0 0 14px}
+a{color:var(--green)}
+
+/* HERO */
+.hero{
+  position:relative;padding:68px 0 56px;
+  background:
+    radial-gradient(820px 440px at 80% 100%, rgba(127,224,226,.28), transparent 64%),
+    radial-gradient(700px 400px at 6% 2%, rgba(255,255,255,.10), transparent 60%),
+    linear-gradient(180deg,#062a44 0%,#0a3e5e 48%,#11638a 100%);
+  border-bottom:1px solid var(--line);
+}
+.kicker{
+  display:inline-block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  color:#07314c;background:#ffffff;padding:6px 13px;border-radius:999px;
+}
+.hero h1{font-size:clamp(42px,11.5vw,72px);font-weight:700;margin:18px 0 12px}
+.hero h1 span{ color:var(--aqua); font-weight:300; }
+.meta{color:var(--muted);font-size:15px;margin:0 0 5px}
+.meta strong{color:var(--text);font-weight:600}
+.sub{font-size:17px;color:#cfeaf3;max-width:52ch;margin-top:16px;font-weight:300;font-family:var(--display)}
+.cta-row{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.btn{
+  display:block;width:100%;text-align:center;padding:16px 18px;border-radius:14px;
+  font-weight:600;font-size:16px;text-decoration:none;border:0;cursor:pointer;font-family:var(--body);
+}
+.btn-primary{background:#ffffff;color:#07314c;box-shadow:0 10px 30px -14px rgba(0,0,0,.8)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.45)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.chip{font-size:12px;letter-spacing:.05em;color:var(--green2);border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;padding:6px 12px;background:rgba(255,255,255,.05)}
+
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--aqua);margin-bottom:10px;font-weight:600}
+h2{font-size:clamp(28px,7.5vw,40px);font-weight:600;margin-bottom:14px}
+.lede{color:var(--muted);font-size:15px;margin-bottom:22px;max-width:54ch}
+
+.band{background:linear-gradient(180deg,var(--blue) 0%,var(--blue2) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* GRID ITEMS */
+.grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:560px){.grid{grid-template-columns:1fr 1fr}}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.item .t{font-weight:600;font-size:15px;margin-bottom:3px;font-family:var(--display)}
+.item .d{font-size:13.5px;color:var(--muted);line-height:1.5}
+
+/* PHOTOS */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gallery .wide{grid-column:1 / -1}
+figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card);position:relative}
+figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+figure.wide img{aspect-ratio:16/9}
+.ph{
+  aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:14px;
+  background:linear-gradient(135deg,rgba(127,224,226,.14),rgba(255,255,255,.07));
+  color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+}
+.ph .slot{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.14em;color:var(--text)}
+.ph .fname{font-size:10.5px;letter-spacing:.04em;text-transform:none;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--aqua)}
+.ph .pcap{font-size:10px;letter-spacing:.1em;opacity:.75}
+figure.wide .ph{aspect-ratio:16/9}
+figcaption{padding:9px 12px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+
+/* ROOMS */
+.room{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:10px;
+  display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.room .n{font-weight:600;font-size:15.5px;font-family:var(--display)}
+.room.taken{opacity:.5}
+.room.taken .p{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px}
+.tag{display:inline-block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  color:#07314c;background:var(--aqua);border-radius:999px;padding:3px 8px;margin-left:8px;vertical-align:2px}
+.room .s{font-size:13px;color:var(--muted);margin-top:3px}
+.room .tot{font-size:12.5px;color:var(--aqua);margin-top:6px;letter-spacing:.02em}
+.room .p{font-family:var(--display);font-weight:700;font-size:25px;line-height:1;color:var(--green);white-space:nowrap}
+.room .pp{font-size:10.5px;color:var(--muted);text-align:right;margin-top:5px;letter-spacing:.12em;text-transform:uppercase}
+.note{border-left:3px solid rgba(255,255,255,.55);background:rgba(255,255,255,.06);padding:13px 15px;
+  border-radius:0 12px 12px 0;font-size:14px;color:#d6eff6;margin-top:18px}
+
+/* TIMELINE */
+.tl{list-style:none;padding:0;margin:0}
+.tl li{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+.tl li:last-child{border-bottom:0}
+.tl .day{font-family:var(--display);font-weight:600;font-size:14px;color:var(--aqua);min-width:70px;padding-top:2px}
+.tl .what{font-size:14.5px;color:#cfeaf3}
+
+/* FORMS */
+.formcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 18px}
+label{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:15px 0 6px;font-weight:600}
+input,select,textarea{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(4,32,50,.6);color:var(--text);font-family:var(--body);font-size:16px}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(255,255,255,.75);outline-offset:1px}
+textarea{min-height:80px;resize:vertical}
+.hint{font-size:12.5px;color:var(--muted);margin-top:11px;line-height:1.5}
+.err{color:var(--warn);font-size:13.5px;margin-top:10px;display:none}
+.ok{display:none;text-align:center;padding:12px 4px}
+.ok .big{font-family:var(--display);font-weight:700;font-size:25px;color:var(--green);margin-bottom:6px}
+.ok p{font-size:14px;color:var(--muted);margin:0}
+.count{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.1em;color:var(--aqua);margin-top:12px}
+.divider{display:flex;align-items:center;gap:12px;margin:34px 0 0;color:var(--muted);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.divider:before,.divider:after{content:"";flex:1;height:1px;background:var(--line)}
+.alt{text-align:center;font-size:14px;color:var(--muted);margin-top:16px}
+footer{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--muted);font-size:13px;text-align:center;line-height:1.7}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">Racecation · Feb 19–22, 2027</span>
+    <h1>HYROX <span>Cancún</span></h1>
+    <p class="meta"><strong>Malecón Tajamar</strong> · walking distance to the race</p>
+    <p class="meta">Private villa + pool · 7 beds · race day Sat Feb 20</p>
+    <p class="sub">Second Annual Trip.<br>Three nights, one house, one crew. Train, race, recover, celebrate — chef, boat, cold plunge, and a proper afterparty. We handle logistics. You handle the sled.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#apply">Apply for a spot in the house</a>
+      <a class="btn btn-ghost" href="#updates">Just keep me posted</a>
+    </div>
+    <div class="chips">
+      <span class="chip">Private chef</span><span class="chip">Yacht day</span>
+      <span class="chip">Cold plunge reset</span><span class="chip">Shakeout run</span>
+      <span class="chip">IV drips in-house</span><span class="chip">Ground transport</span>
+      <span class="chip">Race photographer</span><span class="chip">Afterparty</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Race weekend, Cancún</div>
+    <h2>Where we're racing</h2>
+    <p class="lede">Malecón Tajamar sits on the lagoon side of the hotel zone — flat, walkable, and minutes from the venue.</p>
+    <div class="gallery" id="gal-location"></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">What's in the package</div>
+    <h2>More than a bed</h2>
+    <div class="grid">
+      <div class="item"><div class="t">Private chef</div><div class="d">Race-week fueling done right. Pre-race dinner and recovery breakfasts in the house.</div></div>
+      <div class="item"><div class="t">Guided cold plunge</div><div class="d">Coached reset session — breathwork, plunge, contrast. Post-race legs, saved.</div></div>
+      <div class="item"><div class="t">Yacht day</div><div class="d">Post-race boat out of the marina. Swim stop, music, zero agenda.</div></div>
+      <div class="item"><div class="t">Shakeout run</div><div class="d">Easy group shakeout along the malecón the morning before race day.</div></div>
+      <div class="item"><div class="t">In-home IV drips</div><div class="d">Hydration and recovery drips brought to the house after racing.</div></div>
+      <div class="item"><div class="t">Transport</div><div class="d">Airport and venue runs handled — no rideshare roulette on race morning.</div></div>
+      <div class="item"><div class="t">Photo + video</div><div class="d">Private photographer and videographer available on race day.</div></div>
+      <div class="item"><div class="t">Afterparty</div><div class="d">Table at the club, and the part nobody remembers.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">The weekend</div>
+    <h2>Suggested Itinerary</h2>
+    <ul class="tl">
+      <li><span class="day">Fri 19</span><span class="what">Arrivals and house check-in. Easy shakeout run along the malecón, expo + packet pickup, chef dinner, early night.</span></li>
+      <li><span class="day">Sat 20</span><span class="what">Race day. Photographer on course. IV drips back at the house, dinner in, legs up.</span></li>
+      <li><span class="day">Sun 21</span><span class="what">Guided cold plunge reset in the morning, yacht out of the marina all afternoon, party in the evening.</span></li>
+      <li><span class="day">Mon 22</span><span class="what">Checkout and flights home.</span></li>
+    </ul>
+    <div class="note">Exact heat times shift with the official HYROX schedule — the weekend flexes around your wave.</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">The house</div>
+    <h2>Where we're staying</h2>
+    <p class="lede">Private villa with its own pool, in a gated community at the entrance to the Hotel Zone. Five sleeping spaces, seven beds, full kitchen, and open living and dining areas.</p>
+    <div class="gallery" id="gal-house"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Malecón Tajamar</div>
+    <h2>Rooms &amp; rates</h2>
+    <p class="lede">Per person for all three nights. Priced by bed — pick what you want and claim it early.</p>
+
+    <div class="room"><div><div class="n">Master Suite</div><div class="s">King bed · en-suite bath · sleeps 2</div><div class="tot">$650 for the room — both spots</div></div><div><div class="p">$325</div><div class="pp">per person</div></div></div>
+    <div class="room taken"><div><div class="n">Second Suite<span class="tag">Taken</span></div><div class="s">Queen bed + single bed · sleeps 3</div><div class="tot">$650 for the room — all three beds</div></div><div><div class="p">$217</div><div class="pp">per person</div></div></div>
+    <div class="room"><div><div class="n">Third Bedroom</div><div class="s">Two singles that push into a king · couples room · sleeps 2</div><div class="tot">$500 for the room — both spots</div></div><div><div class="p">$250</div><div class="pp">per person</div></div></div>
+    <div class="room"><div><div class="n">Fourth Bedroom</div><div class="s">Two full beds, one each · sleeps 2</div><div class="tot">$500 for the room — both spots</div></div><div><div class="p">$250</div><div class="pp">per person</div></div></div>
+
+    <div class="count">7 beds · 5 open — approval required</div>
+
+    <div class="note"><strong>How it works:</strong> $100 holds your bed, the rest is due January 7th, 2027. Prices are per person, not per room — bring a roommate. This covers the house only; race entry, flights, and the extras (chef, boat, drips, party) get sorted once we know who's in.</div>
+  </div>
+</section>
+
+<section class="band" id="apply">
+  <div class="wrap">
+    <div class="eyebrow">Option 1 · Approval required</div>
+    <h2>Apply for the house</h2>
+    <p class="lede">Seven beds and we're keeping the crew tight. Tell us who you are and we'll get back to you in a day or two.</p>
+
+    <div class="formcard">
+      <form id="applyForm" novalidate>
+        <label for="a-name">Full name</label>
+        <input id="a-name" name="name" type="text" autocomplete="name" placeholder="First and last">
+        <label for="a-email">Email</label>
+        <input id="a-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com">
+        <label for="a-phone">Mobile number</label>
+        <input id="a-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555">
+        <label for="a-room">Room preference</label>
+        <select id="a-room" name="room">
+          <option value="">No preference — put me anywhere</option>
+          <option>Master Suite — king — $325</option>
+          <option disabled>Second Suite — taken</option>
+          <option>Third Bedroom — king, couples — $250</option>
+          <option>Fourth Bedroom — full bed — $250</option>
+        </select>
+        <label for="a-div">Race division</label>
+        <select id="a-div" name="division">
+          <option>Open — singles</option><option>Pro — singles</option>
+          <option>Doubles</option><option>Relay</option>
+          <option>Not racing — support crew</option>
+        </select>
+        <label for="a-who">Who do you know in the crew?</label>
+        <input id="a-who" name="referral" type="text" placeholder="Name of someone already in">
+        <label for="a-notes">Anything else</label>
+        <textarea id="a-notes" name="notes" placeholder="Bringing a partner, arrival day, add-ons you want in on…"></textarea>
+        <div class="err" id="applyErr"></div>
+        <button class="btn btn-primary" type="submit" style="margin-top:22px">Submit application</button>
+        <div class="hint">Nothing is charged yet — we'll text you once your bed is confirmed.</div>
+      </form>
+      <div class="ok" id="applyOk">
+        <div class="big">You're in the queue</div>
+        <p>We'll confirm your bed and send you a deposit link.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="updates">
+  <div class="wrap">
+    <div class="eyebrow">Option 2 · No commitment</div>
+    <h2>Just keep me posted</h2>
+    <p class="lede">Not ready to commit, or the house fills up? Get trip updates — overflow lodging, group rates, and the next racecation.</p>
+
+    <div class="formcard">
+      <form id="listForm" novalidate>
+        <label for="l-email">Email</label>
+        <input id="l-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com">
+        <label for="l-name">First name <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+        <input id="l-name" name="name" type="text" autocomplete="given-name" placeholder="Optional">
+        <div class="err" id="listErr"></div>
+        <button class="btn btn-ghost" type="submit" style="margin-top:22px">Add me to the list</button>
+        <div class="hint">Trip updates only. Drop off any time.</div>
+      </form>
+      <div class="ok" id="listOk">
+        <div class="big">You're on the list</div>
+        <p>Updates land as things get locked in.</p>
+      </div>
+    </div>
+
+    <div class="divider">Questions?</div>
+    <p class="alt">Text the house organizer directly — <a id="smsLink" href="#">send a message</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Cancún · February 19–22, 2027 · Malecón Tajamar<br>
+    Just a group of friends going to race. Come with us.
+  </div>
+</footer>
+
+<script>
+/* =============================================================
+   1. CONFIG
+   ENDPOINT is the Vercel API route that stores the signup and
+   emails you. Forms submit in the background — nothing opens
+   the visitor's mail app.
+============================================================= */
+var CONFIG = {
+  CONTACT_PHONE: "+15555555555",   // fallback "text us" link
+  ENDPOINT: "/api/signup"
+};
+
+/* =============================================================
+   2. PHOTOS
+   Drop files into /public/img/ on Vercel using EXACTLY the
+   filenames below — nothing else to edit. Each empty slot on
+   the page shows its own slot code and filename, so you can
+   match a photo to a space at a glance.
+   Sizes: wide tiles are 16:9, the rest are 4:3.
+============================================================= */
+var IMG_BASE = "/img/";
+
+var IMGS = {
+  race_wide1: IMG_BASE + "race-1.jpg",
+  race_wide2: IMG_BASE + "race-2.jpg",
+  sign: IMG_BASE + "race-3.jpg",
+  arch: IMG_BASE + "race-4.jpg",
+  h_pool: IMG_BASE + "house-1.jpg",
+  h_bed1: IMG_BASE + "house-2.jpg",
+  h_bed2: IMG_BASE + "house-3.jpg",
+  h_bed4: IMG_BASE + "house-4.jpg",
+  h_bed3: IMG_BASE + "house-5.jpg",
+  h_living: IMG_BASE + "house-6.jpg",
+  h_kitchen: IMG_BASE + "house-7.jpg"
+};
+
+var PHOTOS = {
+  location: [
+    { slot:"LOC-1", src:IMGS.race_wide1, caption:"Race village at the finish arch", wide:true },
+    { slot:"LOC-2", src:IMGS.race_wide2, caption:"Erg row on the malecón", wide:true },
+    { slot:"LOC-3", src:IMGS.sign,       caption:"Sunrise over the start" },
+    { slot:"LOC-4", src:IMGS.arch,       caption:"Coming into the roxzone" }
+  ],
+  house: [
+    { slot:"HOUSE-1", src:IMGS.h_pool,    caption:"Private pool and terrace", wide:true },
+    { slot:"HOUSE-2", src:IMGS.h_bed1,    caption:"Master suite — king" },
+    { slot:"HOUSE-3", src:IMGS.h_bed2,    caption:"Second suite — queen + single" },
+    { slot:"HOUSE-4", src:IMGS.h_bed4,    caption:"Third bedroom — two singles" },
+    { slot:"HOUSE-5", src:IMGS.h_bed3,    caption:"Fourth bedroom — two fulls" },
+    { slot:"HOUSE-6", src:IMGS.h_living,  caption:"Living and dining" },
+    { slot:"HOUSE-7", src:IMGS.h_kitchen, caption:"Full kitchen" }
+  ]
+};
+
+function renderGallery(id, list){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.innerHTML = "";
+
+  list.forEach(function(p){
+    var fig = document.createElement("figure");
+    if(p.wide) fig.className = "wide";
+
+    var src = p.src || (p.file ? IMG_BASE + p.file : "");
+
+    if (src) {
+      var img = document.createElement("img");
+      img.alt = p.caption;
+      img.loading = (id === "gal-location" && p.slot === "LOC-1") ? "eager" : "lazy";
+      img.src = src;
+      img.onerror = function(){
+        img.remove();
+        fig.insertBefore(placeholder(p), fig.firstChild);
+      };
+      fig.appendChild(img);
+    } else {
+      fig.appendChild(placeholder(p));
+    }
+
+    var cap = document.createElement("figcaption");
+    cap.textContent = p.caption;
+    fig.appendChild(cap);
+    el.appendChild(fig);
+  });
+}
+
+function placeholder(p){
+  var ph = document.createElement("div");
+  ph.className = "ph";
+  ph.innerHTML = '<span class="slot">' + p.slot + '</span>' +
+                 '<span class="fname">' + IMG_BASE + (p.file || "") + '</span>' +
+                 '<span class="pcap">' + p.caption + '</span>';
+  return ph;
+}
+renderGallery("gal-location", PHOTOS.location);
+renderGallery("gal-house", PHOTOS.house);
+
+/* =============================================================
+   3. FORMS
+============================================================= */
+document.getElementById("smsLink").href =
+  "sms:" + CONFIG.CONTACT_PHONE + "?&body=" + encodeURIComponent("Question about the HYROX Cancún house: ");
+
+if (!CONFIG.ENDPOINT) {
+  document.getElementById("applyHint").textContent =
+    "Submitting opens your mail app with the details filled in — hit send and you're in the queue. Nothing is charged yet.";
+}
+
+function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function digits(v){ return (v || "").replace(/\D/g, ""); }
+function showError(id,msg){ var e=document.getElementById(id); e.textContent=msg; e.style.display="block"; }
+function clearError(id){ document.getElementById(id).style.display="none"; }
+function succeed(formId, okId){
+  document.getElementById(formId).style.display = "none";
+  var ok = document.getElementById(okId);
+  ok.style.display = "block";
+  ok.scrollIntoView({ behavior:"smooth", block:"center" });
+}
+
+function deliver(type, payload, formId, okId, errId){
+  var btn = document.querySelector("#" + formId + " button");
+  var original = btn ? btn.textContent : "";
+  if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+
+  fetch(CONFIG.ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(Object.assign({ type: type }, payload))
+  }).then(function(r){
+    if (!r.ok) throw new Error("bad status");
+    succeed(formId, okId);
+  }).catch(function(){
+    if (btn) { btn.disabled = false; btn.textContent = original; }
+    showError(errId, "That didn't go through. Try again, or text us with the link below.");
+  });
+}
+
+document.getElementById("applyForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  clearError("applyErr");
+  var name=val("a-name"), email=val("a-email"), phone=val("a-phone");
+  if(name.length < 2) return showError("applyErr","Add your full name.");
+  if(!isEmail(email)) return showError("applyErr","That email doesn't look right.");
+  if(digits(phone).length < 10) return showError("applyErr","Add a mobile number we can text.");
+
+  var payload = {
+    name:name, email:email, phone:phone,
+    room: val("a-room") || "No preference",
+    division: val("a-div"),
+    referral: val("a-who"),
+    notes: val("a-notes")
+  };
+  deliver("application", payload, "applyForm", "applyOk", "applyErr");
+});
+
+document.getElementById("listForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  clearError("listErr");
+  var email = val("l-email");
+  if(!isEmail(email)) return showError("listErr","That email doesn't look right.");
+  var payload = { email:email, name: val("l-name") };
+  deliver("subscribe", payload, "listForm", "listOk", "listErr");
+});
+</script>
+</body>
+</html>
